@@ -8,22 +8,39 @@ class Cooks extends StatefulWidget {
 class _CooksState extends State<Cooks> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Pratos do Dia"),
+      appBar: AppBar(
+        title: Text("Pratos do Dia"),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: [
+              Container(
+                child: Text("Hello"),
+              ),
+              Container(
+                width: double.infinity,
+                height: 520,
+                child: ListView(
+                  children: [
+                    card(
+                        "https://upload.wikimedia.org/wikipedia/commons/5/59/Calulu.jpg"),
+                    card(
+                        "https://img-global.cpcdn.com/recipes/f543d4fd00c3f93c/751x532cq70/foto-principal-da-receita-mufete.jpg"),
+                    card(
+                        "https://diaonline.ig.com.br/wp-content/uploads/2020/07/comida-caseira-brasilia_capa-1024x683.jpg"),
+                    card(
+                        "https://www.receitasemenus.net/wp-content/uploads/2019/02/feijoada-transmontana-minha-moda.jpg"),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
-        body: ListView(
-          children: [
-            card(
-                "https://upload.wikimedia.org/wikipedia/commons/5/59/Calulu.jpg"),
-            card(
-                "https://img-global.cpcdn.com/recipes/f543d4fd00c3f93c/751x532cq70/foto-principal-da-receita-mufete.jpg"),
-            card(
-                "https://diaonline.ig.com.br/wp-content/uploads/2020/07/comida-caseira-brasilia_capa-1024x683.jpg"),
-            card(
-                "https://www.receitasemenus.net/wp-content/uploads/2019/02/feijoada-transmontana-minha-moda.jpg"),
-          ],
-        ));
+      ),
+    );
   }
 
   Widget card(url) {
@@ -36,7 +53,11 @@ class _CooksState extends State<Cooks> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const ListTile(
-                  leading: Icon(Icons.restaurant_outlined),
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "https://piaui.folha.uol.com.br/wp-content/uploads/2020/12/erika-nogueira-vieira.png"),
+                    backgroundColor: Colors.transparent,
+                  ),
                   title: Text(
                     "Cozinha da Tia",
                     style: TextStyle(
@@ -75,7 +96,7 @@ class _CooksState extends State<Cooks> {
                         color: Colors.amber,
                       ),
                       FlatButton(
-                        child: const Text('Encomendar'),
+                        child: const Text('Reservar'),
                         onPressed: () {/* ... */},
                         textColor: Colors.white,
                         color: Colors.amber,
