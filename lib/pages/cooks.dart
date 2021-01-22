@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class Cooks extends StatefulWidget {
   @override
@@ -8,7 +10,6 @@ class Cooks extends StatefulWidget {
 class _CooksState extends State<Cooks> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Pratos do Dia"),
@@ -17,8 +18,24 @@ class _CooksState extends State<Cooks> {
         child: Container(
           child: Column(
             children: [
+              SizedBox(
+                height: 3,
+              ),
               Container(
-                child: Text("Hello"),
+                color: Colors.white,
+                width: double.infinity,
+                height: 30,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    categoryText("Garfo & Faca"),
+                    categoryText("Fast Food"),
+                    categoryText("Churrascos"),
+                    categoryText("Infantis"),
+                    categoryText("Fritos"),
+                    categoryText("Bebidas"),
+                  ],
+                ),
               ),
               Container(
                 width: double.infinity,
@@ -33,6 +50,8 @@ class _CooksState extends State<Cooks> {
                         "https://diaonline.ig.com.br/wp-content/uploads/2020/07/comida-caseira-brasilia_capa-1024x683.jpg"),
                     card(
                         "https://www.receitasemenus.net/wp-content/uploads/2019/02/feijoada-transmontana-minha-moda.jpg"),
+                    card(
+                        "https://www.comprerural.com/wp-content/uploads/2019/12/melhores-cortes-para-o-churrasco.jpg"),
                   ],
                 ),
               ),
@@ -43,9 +62,26 @@ class _CooksState extends State<Cooks> {
     );
   }
 
+  Widget categoryText(categoria) {
+    return Padding(
+      padding: EdgeInsets.only(right: 10),
+      child: Container(
+        padding: EdgeInsets.all(5),
+        color: Colors.amber[200],
+        child: Text(
+          categoria,
+          style: TextStyle(
+            color: Colors.blue,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget card(url) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.all(7),
       child: Column(
         children: [
           Card(
